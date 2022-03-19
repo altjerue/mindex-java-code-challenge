@@ -48,10 +48,18 @@ public class ReportingStructureServiceImplTest {
         // Read checks
         ReportingStructure readReportingStructure = restTemplate.getForEntity(reportingStructureUrl, ReportingStructure.class, johnLennon.getEmployeeId()).getBody();
         assertNotNull(readReportingStructure);
-        assertEmployeeEquivalence(readReportingStructure.getEmployee(), johnLennon);
+        assertEmployeeEquivalence(readReportingStructure.getEmployee(), testReportingStructure.getEmployee());
+//        assertReportingStructureEquivalence(readReportingStructure, testReportingStructure);
         assertEquals(4, readReportingStructure.getNumberOfReports());
 
     }
+
+/*
+    private static void assertReportingStructureEquivalence(ReportingStructure expected, ReportingStructure actual) {
+        assertEmployeeEquivalence(expected.getEmployee(), actual.getEmployee());
+        assertEquals(expected.getNumberOfReports(), actual.getNumberOfReports());
+    }
+*/
 
     private static void assertEmployeeEquivalence(Employee expected, Employee actual) {
         assertEquals(expected.getFirstName(), actual.getFirstName());
