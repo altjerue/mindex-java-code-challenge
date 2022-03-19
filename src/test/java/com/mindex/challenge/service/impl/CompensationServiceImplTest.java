@@ -3,7 +3,6 @@ package com.mindex.challenge.service.impl;
 import com.mindex.challenge.dao.EmployeeRepository;
 import com.mindex.challenge.data.Compensation;
 import com.mindex.challenge.data.Employee;
-import com.mindex.challenge.service.CompensationService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,9 +23,6 @@ public class CompensationServiceImplTest {
 
     private String compensationUrl;
     private String compensationIdUrl;
-
-    @Autowired
-    private CompensationService compensationService;
 
     @Autowired
     private EmployeeRepository employeeRepository;
@@ -62,12 +58,14 @@ public class CompensationServiceImplTest {
         assertCompensationEquivalence(readCompensation, createdCompensation);
     }
 
+    // Checking if Compensations are equivalent, going property by property
     private static void assertCompensationEquivalence(Compensation expected, Compensation actual) {
-        assertEmployeeEquivalence(expected.getEmployee() , actual.getEmployee());
-        assertEquals(expected.getSalary(), actual.getSalary(), 0.001);
+        assertEmployeeEquivalence(expected.getEmployee(), actual.getEmployee());
+        assertEquals(expected.getSalary(), actual.getSalary(), 0.0);
         assertEquals(expected.getEffectiveDate(), actual.getEffectiveDate());
     }
 
+    // Checking if Employees are equivalent, going property by property
     private static void assertEmployeeEquivalence(Employee expected, Employee actual) {
         assertEquals(expected.getFirstName(), actual.getFirstName());
         assertEquals(expected.getLastName(), actual.getLastName());

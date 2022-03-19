@@ -37,7 +37,7 @@ public class ReportingStructureServiceImpl implements ReportingStructureService 
     }
 
     /*
-    method calcNumberOfReports is a recursive function that will calculate the number of direct reports of each employee
+    Given an employee, the method calcNumberOfReports calculates the number of direct reports of such employee, recursively if we have reports in tree-like structure.
     */
     private int calcNumberOfReports(Employee employee) {
         int numberOfReports = 0;
