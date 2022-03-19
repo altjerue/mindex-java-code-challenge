@@ -5,14 +5,11 @@ public class ReportingStructure {
     private int numberOfReports;
 
     public ReportingStructure() {
-
     }
 
     public ReportingStructure(Employee employee) {
         this.employee = employee;
     }
-
-    // getters/setters
 
     public Employee getEmployee() {
         return this.employee;
