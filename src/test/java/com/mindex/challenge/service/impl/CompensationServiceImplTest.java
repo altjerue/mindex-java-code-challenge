@@ -42,8 +42,8 @@ public class CompensationServiceImplTest {
     @Test
     public void testCreateRead() {
         Compensation testCompensation = new Compensation();
-        Employee johnLennon = employeeRepository.findByEmployeeId("03aa1462-ffa9-4978-901b-7c001562cf6f");
-        testCompensation.setEmployee(johnLennon);
+        Employee johnLennon = employeeRepository.findByEmployeeId("16a596ae-edd3-4847-99fe-c4518e82c86f");
+        testCompensation.setEmployeeId(johnLennon.getEmployeeId());
         testCompensation.setSalary(86.42);
         testCompensation.setEffectiveDate(new Date());
 
@@ -60,16 +60,9 @@ public class CompensationServiceImplTest {
 
     // Checking if Compensations are equivalent, going property by property
     private static void assertCompensationEquivalence(Compensation expected, Compensation actual) {
-        assertEmployeeEquivalence(expected.getEmployee(), actual.getEmployee());
+        assertEquals(expected.getEmployeeId(), actual.getEmployeeId());
         assertEquals(expected.getSalary(), actual.getSalary(), 0.0);
         assertEquals(expected.getEffectiveDate(), actual.getEffectiveDate());
     }
 
-    // Checking if Employees are equivalent, going property by property
-    private static void assertEmployeeEquivalence(Employee expected, Employee actual) {
-        assertEquals(expected.getFirstName(), actual.getFirstName());
-        assertEquals(expected.getLastName(), actual.getLastName());
-        assertEquals(expected.getDepartment(), actual.getDepartment());
-        assertEquals(expected.getPosition(), actual.getPosition());
-    }
 }
